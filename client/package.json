@@ -14,7 +14,10 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.1.0",
+<<<<<<< HEAD
     "lucide-react": "^0.513.0",
+=======
+>>>>>>> 0e63142e57fb8f6459435eb3c8d90457913d64ed
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.1",
