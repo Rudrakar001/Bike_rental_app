@@ -32,7 +32,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h1 className="text-4xl font-bold text-sky-600 mb-2">Freedom To Move</h1>
         <p className="text-lg text-sky-500 mb-6">
-          Presenting the safe, reliable and affordable mobility solution
+          Presenting the safe, Reliable and affordable mobility solution
         </p>
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center relative">
           <div className="relative w-full md:w-64">

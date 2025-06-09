@@ -1,7 +1,7 @@
 import React from "react";
 
-// Icons – you can use Heroicons, Lucide, or images from `assets` folder.
-import { ShieldCheck, Truck, CreditCard, Wrench, Sparkles } from "lucide-react"; // optional: install lucide-react
+// Icons – you can use Heroicons, Lucide, or images from `assets` Folder.
+import { ShieldCheck, Truck, CreditCard, Wrench, Sparkles } from "lucide-react"; // optional: install lucide-react 
 
 const features = [
   { icon: <ShieldCheck className="w-6 h-6 text-blue-600" />, label: "Govt. Compliant Vehicles" },
