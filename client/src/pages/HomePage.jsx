@@ -1,5 +1,5 @@
 import React from 'react'
-<<<<<<< HEAD
+
 import { Link } from 'react-router-dom';
 import Hero from '../component/Hero';
 import Features from '../component/Features';
@@ -21,18 +21,4 @@ const HomePage = () => {
 }
 
 export default HomePage;
-// s
-
-
-=======
-
-const HomePage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-
-export default HomePage
->>>>>>> 0e63142e57fb8f6459435eb3c8d90457913d64ed
+// h
