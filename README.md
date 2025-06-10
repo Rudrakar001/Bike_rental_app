@@ -8,6 +8,7 @@ and the backend server will be started.
 
 Now, if you are gettin only the code files without preinstalled packages and modules then you need to run a command "npm install" in client 
 and this will install all the packages for frontend. -->
+<!-- a -->
 🚴‍♂️ Bike Rental System - Full Stack Application
 A full-featured Bike Rental System where customers can rent/return bikes, admins can manage the fleet and users, and unregistered users can explore available bikes and their ratings.
 
