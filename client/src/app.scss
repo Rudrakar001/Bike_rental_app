@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+.urbanist-font {
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    font-family: "Urbanist", sans-serif;
+
+    .form-control {
+        background-color: #f7f7f7 !important;
+        border-radius: 5px;
+        border: none !important;
+        height: 50px;
+
+        &:focus {
+            box-shadow: none !important;
+        }
+    }
+
+    .bg-dark {
+        background-color: rgb(47, 43, 149) !important;
+    }
+}
+
+.login-wrap {
+    display: flex;
+    align-items: flex-start;
+    border: 8px solid #1d3353;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to right, #f9fafc, #e0e8f0);
+
+    &-left {
+        width: 40%;
+        min-width: 340px;
+        min-height: 100vh;
+        background-color: #de1cae;
+        background-image: url('./assets/register.jpg') ;
+        background-repeat: no-repeat;
+        background-size: 60% auto;
+        background-position: center bottom;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+
+        h1 {
+            color: #15e938;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 80%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    &-right {
+        flex-grow: 1;
+        height: 100vh;
+        overflow-y: auto;
+        background: linear-gradient(to bottom right, #f3f4f7, #dde5ed);
+        padding: 2rem;
+    }
+
+    a {
+        color: #ce3961;
+        display: inline-block;
+        margin: 0 6px;
+        font-weight: 600;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #1d3353;
+        }
+    }
+}
+
+
+.form-wrapper {
+    width: 100%;
+    max-width: 450px;
+    padding: 1rem;
+
+    label {
+        font-weight: 400;
+    }
+}
+
+.login-btn {
+    // border-radius: 60px;
+    width: 140px;
+    height: 45px;
+    font-size: 1.1rem ;
+    background: #1d3353 !important;
+    border: none !important;
+}
+
+// custom radio button
+.custom-radio-btn {
+    position: relative;
+    cursor: pointer;
+
+    .checkMark {
+        img {
+            max-width: 30px;
+            margin-right: 10px;
+        }
+
+        display: flex;
+        align-items: center;
+        padding: 8px 15px;
+        border: 2px solid #f7f7f7;
+        border-radius: 5px;
+        background-color: #f7f7f7;
+        font-weight: 500;
+        // box-shadow: 3px 3px 4px #f3f3f3;
+    }
+
+    >input {
+        position: absolute;
+        opacity: 0;
+
+        &:checked+.checkMark {
+            border-color: #1d3353;
+        }
+    }
+}
