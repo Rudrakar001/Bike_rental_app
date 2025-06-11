@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+// hero
 const Hero = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);

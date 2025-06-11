@@ -1,9 +1,9 @@
 const globalroute=require('express').Router();
 
-const BookingRoute=require('./bookingRoute');
+const Authroute=require('./Authentication');
 
 
-globalroute.use('/booking',BookingRoute);
+globalroute.use('/auth',Authroute);
 
 
 module.exports= globalroute;

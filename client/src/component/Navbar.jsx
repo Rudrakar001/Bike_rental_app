@@ -18,7 +18,7 @@ const Navbar = () => {
           <a href="#">Partner With Us</a>
           <a href="#">Subscription</a>
         </nav>
-        <Link to="/register">
+        <Link to="/login">
         <button className="bg-white text-blue-600 px-4 py-2 rounded-lg">Sign In</button></Link>
         
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-// Icons – you can use Heroicons, Lucide, or images from `assets` Folder.
+// icons – you can use Heroicons, Lucide, or images from `assets` Folder.
 import { ShieldCheck, Truck, CreditCard, Wrench, Sparkles } from "lucide-react"; // optional: install lucide-react 
 
 const features = [

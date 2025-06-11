@@ -4,7 +4,7 @@ import bike1 from "../assets/bike1.jpg";
 import bike2 from "../assets/bike2.avif";
 import scooter1 from "../assets/scooter1.jpeg";
 import scooter2 from "../assets/scooter2.avif";
-
+// a
 const RentingFleet = () => {
   // const navigate = useNavigate();
   const [showMore, setShowMore] = useState(false);
