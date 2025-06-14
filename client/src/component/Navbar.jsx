@@ -1,5 +1,5 @@
 import React from "react";
-import register from "../assets/register.png"
+import register from "../assets/register.png"; // Updated path to the logo image
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
