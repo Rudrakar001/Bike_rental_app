@@ -6,9 +6,4 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(),tailwindcss()],
 });
-<<<<<<< HEAD
 // a
-=======
-
-
->>>>>>> 183aa22eec1c0ae9abf67048cd4f6be1eceb7dd6

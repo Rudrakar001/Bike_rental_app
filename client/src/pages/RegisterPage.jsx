@@ -1,127 +1,132 @@
-import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { useEffect } from 'react';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"
+import "../styles/Register.scss";
 
-// Import images correctly (assuming they are in src/assets)
-import AdminImg from '../assets/admin.jpg';  // Changed from DoctorImg to AdminImg for clarity
-import UserImg from '../assets/user.jpg';   // Using same image for both for now, replace with actual user image
+const RegisterPage = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    profileImage: null,
+  });
 
-export default function Register() {
-    const navigate = useNavigate();
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+      [name]: name === "profileImage" ? files[0] : value,
+    });
+  };
 
-    useEffect(() => {
-        if (Cookies.get("userToken")) {
-            const userData = JSON.parse(Cookies.get("userData"));
-            const getRole = userData?.role;
-            
-            if (getRole === "admin") {
-                navigate("/admin-dashboard");
-            } else {
-                navigate("/dashboard");
-            }
-        }
-    }, [navigate]);
+  const [passwordMatch, setPasswordMatch] = useState(true)
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Add your registration logic here
-    };
+  useEffect(() => {
+    setPasswordMatch(formData.password === formData.confirmPassword || formData.confirmPassword === "")
+  })
 
-    return (
-        <div className="login-wrap">
-            <div className="login-wrap-left pt-4">
-                <h1>Welcome to Bike Hook</h1>
-            </div>
-            
-            <div className="login-wrap-right d-flex align-items-center py-5 px-3 flex-column">
-                <h1>Create your account</h1>
-                
-                <div className="form-wrapper">
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <Form.Label>Choose User Type</Form.Label>
-                            <div>
-                                <label className="custom-radio-btn">
-                                    <input 
-                                        type='radio' 
-                                        name='userType' 
-                                        value="admin" 
-                                        required 
-                                    />
-                                    <span className="checkMark">
-                                        <img src={AdminImg} alt='admin' width="50" height="50" />
-                                        Admin
-                                    </span>
-                                </label>
-                                
-                                <label className="custom-radio-btn ms-3">
-                                    <input 
-                                        type='radio' 
-                                        name='userType' 
-                                        value="user" 
-                                        required 
-                                    />
-                                    <span className="checkMark">
-                                        <img src={UserImg} alt='user' width="50" height="50" />
-                                        User
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div className="mb-3">
-                            <Form.Label htmlFor="fname">First Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                id="fname"
-                                required
-                            />
-                        </div>
-                        
-                        <div className="mb-3">
-                            <Form.Label htmlFor="lname">Last Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                id="lname"
-                                required
-                            />
-                        </div>
-                        
-                        <div className="mb-3">
-                            <Form.Label htmlFor="email">Email</Form.Label>
-                            <Form.Control
-                                type="email"
-                                id="email"
-                                required
-                                aria-describedby="emailHelpBlock"
-                            />
-                        </div>
-                        
-                        <div className="mb-3">
-                            <Form.Label htmlFor="password">Password</Form.Label>
-                            <Form.Control
-                                type="password"
-                                id="password"
-                                required
-                                minLength="6"
-                                aria-describedby="passwordHelpBlock"
-                            />
-                        </div>
-                        
-                        <div className="text-center mt-5 mb-5">
-                            <Button variant="success" className="login-btn" type='submit'>
-                                Register
-                            </Button>
-                        </div>
-                    </form>
-                    
-                    <p className="text-center small">
-                        Already have an account? <Link to="/login">Login</Link> here
-                    </p>
-                </div>
-            </div>
-        </div>
-    );
-}
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const register_form = new FormData()
+
+      for (var key in formData) {
+        register_form.append(key, formData[key])
+      }
+
+      const response = await fetch("http://localhost:3001/auth/register", {
+        method: "POST",
+        body: register_form
+      })
+
+      if (response.ok) {
+        navigate("/login")
+      }
+    } catch (err) {
+      console.log("Registration failed", err.message)
+    }
+  }
+
+  return (
+    <div className="register">
+      <div className="register_content">
+        <form className="register_content_form" onSubmit={handleSubmit}>
+          <input
+            placeholder="First Name"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
+          <input
+            placeholder="Last Name"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
+          <input
+            placeholder="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            placeholder="Password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            type="password"
+            required
+          />
+          <input
+            placeholder="Confirm Password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            type="password"
+            required
+          />
+
+          {!passwordMatch && (
+            <p style={{ color: "red" }}>Passwords are not matched!</p>
+          )}
+
+          <input
+            id="image"
+            type="file"
+            name="profileImage"
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="image">
+            <img src="/assets/addImage.png" alt="add profile photo" />
+            <p>Upload Your Photo</p>
+          </label>
+
+          {formData.profileImage && (
+            <img
+              src={URL.createObjectURL(formData.profileImage)}
+              alt="profile photo"
+              style={{ maxWidth: "80px" }}
+            />
+          )}
+          <button type="submit" disabled={!passwordMatch}>REGISTER</button>
+        </form>
+        <a href="/login">Already have an account? Log In Here</a>
+      </div>
+    </div>
+  );
+};
+
+
+export default RegisterPage;
